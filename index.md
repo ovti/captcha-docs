@@ -1,54 +1,112 @@
-# How and When CAPTCHAs are Displayed
+# How and When CAPTCHAs Are Displayed
 
 ## Overview
 
-CAPTCHA is used to help protect the service from automated traffic, abuse, and other unwanted activity. While CAPTCHA can be shown on every user interaction, doing so can interrupt normal user flow and negatively affect the overall experience.
+CAPTCHA is used to help protect the service from automated traffic, abuse, and other unwanted activity. While CAPTCHA could be shown on every user interaction, doing so would interrupt normal user flow and negatively affect the overall experience.
 
-To balance security and usability, our service does not show a CAPTCHA to every user. Instead, it appears only when the system notices suspicious behavior or sudden spikes in traffic.
-
-> **See Also**
->
-> - [What is CAPTCHA?](#what-is-captcha)
-> - [CAPTCHA implementation details](#captcha-implementation-details)
+To balance security and usability, the service does not display CAPTCHA for every request. Instead, a challenge appears only when the system detects suspicious behavior or unusual traffic patterns.
 
 ---
 
-## When a CAPTCHA Is Shown
+## How CAPTCHA Is Triggered
 
-CAPTCHA is shown if **any** of the following conditions are met.
+The system continuously evaluates incoming requests and overall traffic patterns. A CAPTCHA may be triggered when a request or a group of requests differs from what is considered normal behavior.
 
-### 1. High Number of Requests from One IP Address
+CAPTCHA can also be enabled manually when additional protection is needed.
 
-More than **500 requests** are received from the same IP address within **20 minutes**.
+This approach helps protect the service without affecting most users.
 
-This usually indicates automated behavior, such as scripts or bots sending many requests in a short period of time.
+> **Placeholder:** Flowchart  
+> _Incoming request → Rule evaluation → CAPTCHA shown or request allowed_
+
+---
+
+## Conditions for Triggering CAPTCHA
+
+Each condition listed below is evaluated independently.  
+If **any one condition** is met, a CAPTCHA challenge is displayed.
+
+### 1. High number of requests from one IP address
+
+A CAPTCHA is triggered if more than **500 requests** are received from the same IP address within **20 minutes**.
+
+This behavior often indicates automated scripts or bots sending requests much faster than a human user would.
+
+---
 
 ### 2. IP address is blacklisted
 
-The request originates from an IP address that is present in the blacklist.
+A CAPTCHA is shown if a request comes from an IP address that is present on the service’s blacklist.
+
+Blacklisted IP addresses are typically associated with suspicious or previously abusive activity.
 
 > **Placeholder:** Link to IP blacklist management documentation
 
-### 3. Traffic spike compared to baseline
+---
 
-The number of requests in the **current hour** exceeds **twice** the average number of requests for the same hour over the **previous two weeks**.
+### 3. Traffic spike compared to normal usage
 
-> **Placeholder:** Link to traffic monitoring documentation
+A CAPTCHA may be triggered if the number of requests in the **current hour** exceeds **twice the average** number of requests for the same hour over the **previous two weeks**.
 
-### 4. Repeated identical payload
+This condition helps protect the service during sudden traffic spikes that may indicate coordinated attacks or abnormal behavior.
 
-The same request payload is sent more than **five times within 30 seconds**. This can indicate automated scripts or bots trying to perform the same action repeatedly.
-
-### 5. CAPTCHA enabled manually
-
-CAPTCHA is enabled manually through the admin panel for specific requests. This allows administrators to proactively protect against suspicious activity or during periods of increased risk.
+> **Placeholder:** Link to traffic monitoring and analytics documentation
 
 ---
 
-## What Happens When CAPTCHA Is Triggered?
+### 4. Repeated identical payloads
+
+A CAPTCHA is triggered if the same request payload is sent more than **five times within 30 seconds**.
+
+This pattern is common in spam attempts or automated retries that repeatedly submit identical data.
+
+---
+
+### 5. CAPTCHA enabled manually by administrators
+
+Administrators can manually enable CAPTCHA through the admin panel for selected requests or scenarios.
+
+This option is typically used during:
+
+- Active attacks or abuse not yet covered by automated rules
+- Maintenance periods that require additional protection
+
+> **Placeholder:** Screenshot of CAPTCHA settings in the admin panel  
+> **Placeholder:** Link to admin panel documentation
+
+---
+
+## What Happens When CAPTCHA Is Triggered
 
 When a CAPTCHA is triggered:
 
-- The user is presented with a CAPTCHA challenge that they must solve to proceed.
-- If the user successfully solves the CAPTCHA, they can continue with their request as normal.
-- If the user fails to solve the CAPTCHA, they will be prompted to try again until they succeed or choose to abandon the request.
+- The user is presented with a CAPTCHA challenge
+- The request continues only after the challenge is completed successfully
+- If the user does not complete the CAPTCHA, the request may be delayed or abandoned by the user
+
+> **Placeholder:** Example CAPTCHA challenge shown to the user
+
+---
+
+## Who Might Encounter a CAPTCHA
+
+A CAPTCHA may appear for:
+
+- Users sending many requests in a short period of time
+- Users on shared or previously flagged networks
+- Automated tools or scripts
+- Legitimate users during periods of unusual traffic
+
+In most cases, CAPTCHA is temporary and stops appearing once activity returns to normal.
+
+---
+
+## See Also
+
+- [What is CAPTCHA?](#placeholder)
+- [Accessing the admin panel](#placeholder)
+- [Security and abuse prevention overview](#placeholder)
+- [Traffic monitoring and analytics](#placeholder)
+- [IP blacklist management](#placeholder)
+
+---
