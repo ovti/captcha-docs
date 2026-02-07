@@ -14,23 +14,22 @@ The system continuously evaluates incoming requests and overall traffic patterns
 
 CAPTCHA can also be enabled manually when additional protection is needed.
 
-This approach helps protect the service without affecting most users.
+> **Placeholder:** Flowchart illustrating request evaluation → Rule check → CAPTCHA challenge or request allowed
 
-> **Placeholder:** Flowchart  
-> _Incoming request → Rule evaluation → CAPTCHA shown or request allowed_
+This approach helps protect the service without affecting most users.
 
 ---
 
 ## Conditions for Triggering CAPTCHA
 
 Each condition listed below is evaluated independently.  
-If **any one condition** is met, a CAPTCHA challenge is displayed.
+If **any** of the conditions is met, a CAPTCHA challenge will be presented to the user.
 
 ### 1. High number of requests from one IP address
 
 A CAPTCHA is triggered if more than **500 requests** are received from the same IP address within **20 minutes**.
 
-This behavior often indicates automated scripts or bots sending requests much faster than a human user would.
+This behavior often indicates automated scripts or bots sending requests much faster than a human user would. An example of this could be a bot attempting to scrape data or perform a brute-force attack.
 
 ---
 
@@ -38,7 +37,7 @@ This behavior often indicates automated scripts or bots sending requests much fa
 
 A CAPTCHA is shown if a request comes from an IP address that is present on the service’s blacklist.
 
-Blacklisted IP addresses are typically associated with suspicious or previously abusive activity.
+Blacklisted IP addresses are typically associated with suspicious or previously abusive activity. An example of this could be an IP address that has been reported for sending spam or attempting to exploit vulnerabilities.
 
 > **Placeholder:** Link to IP blacklist management documentation
 
@@ -48,7 +47,7 @@ Blacklisted IP addresses are typically associated with suspicious or previously 
 
 A CAPTCHA may be triggered if the number of requests in the **current hour** exceeds **twice the average** number of requests for the same hour over the **previous two weeks**.
 
-This condition helps protect the service during sudden traffic spikes that may indicate coordinated attacks or abnormal behavior.
+This condition helps protect the service during sudden traffic spikes that may indicate coordinated attacks or abnormal behavior. An example of this could be a sudden surge in traffic from a specific region or during a particular time of day.
 
 > **Placeholder:** Link to traffic monitoring and analytics documentation
 
@@ -58,7 +57,7 @@ This condition helps protect the service during sudden traffic spikes that may i
 
 A CAPTCHA is triggered if the same request payload is sent more than **five times within 30 seconds**.
 
-This pattern is common in spam attempts or automated retries that repeatedly submit identical data.
+This pattern is common in spam attempts or automated retries that repeatedly submit identical data. An example of this could be multiple form submissions with the same content in a short period.
 
 ---
 
@@ -71,7 +70,7 @@ This option is typically used during:
 - Active attacks or abuse not yet covered by automated rules
 - Maintenance periods that require additional protection
 
-> **Placeholder:** Screenshot of CAPTCHA settings in the admin panel  
+> **Placeholder:** Screenshot of admin panel with CAPTCHA settings highlighted
 > **Placeholder:** Link to admin panel documentation
 
 ---
@@ -98,6 +97,19 @@ A CAPTCHA may appear for:
 - Legitimate users during periods of unusual traffic
 
 In most cases, CAPTCHA is temporary and stops appearing once activity returns to normal.
+
+---
+
+## Frequently Asked Questions
+
+**Does seeing a CAPTCHA mean a user is blocked?**  
+No. CAPTCHA is a challenge to verify that the user is human. It does not block access but may require additional steps to continue.
+
+**Can legitimate users see CAPTCHA?**  
+Yes. Shared networks, VPNs, or temporary spikes in traffic can cause legitimate users to encounter CAPTCHA. It is designed to be a temporary measure.
+
+**How long does CAPTCHA remain active?**  
+CAPTCHA typically stops appearing once traffic returns to normal patterns.
 
 ---
 
