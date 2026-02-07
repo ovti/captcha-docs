@@ -17,17 +17,17 @@
 
 ## Overview
 
-CAPTCHA is used to help protect the service from automated traffic, abuse, and other unwanted activity. While CAPTCHA could be shown on every user interaction, doing so would interrupt normal user flow and negatively affect the overall experience.
+CAPTCHA is used to help protect the service from **automated traffic, abuse, and other unwanted activity**. While CAPTCHA could be shown on every user interaction, doing so would **interrupt normal user flow** and negatively affect the overall experience.
 
-To balance security and usability, the service does not display CAPTCHA for every request. Instead, a challenge appears only when the system detects suspicious behavior or unusual traffic patterns.
+To balance **security and usability**, the service does not display CAPTCHA for every request. Instead, a challenge appears only when the system detects **suspicious behavior or unusual traffic patterns**.
 
 ---
 
 ## How CAPTCHA Is Triggered
 
-The system continuously evaluates incoming requests and overall traffic patterns. A CAPTCHA may be triggered when a request or a group of requests differs from what is considered normal behavior.
+The system continuously evaluates **incoming requests** and overall **traffic patterns**. A CAPTCHA may be triggered when a request or a group of requests **differs from what is considered normal behavior**.
 
-CAPTCHA can also be enabled manually when additional protection is needed.
+CAPTCHA can also be **enabled manually** when additional protection is needed.
 
 > **Placeholder:** Flowchart illustrating request evaluation → Rule check → CAPTCHA challenge or request allowed
 
@@ -46,17 +46,17 @@ A CAPTCHA is triggered if more than **500 requests** are received from the same 
 
 This behavior often indicates automated scripts or bots sending requests much faster than a human user would.
 
-An example of this could be a bot attempting to scrape data or perform a brute-force attack.
+**Example:** A bot attempting to scrape data or perform a brute-force attack.
 
 ---
 
 ### 2. IP address is blacklisted
 
-A CAPTCHA is shown if a request comes from an IP address that is present on the service’s blacklist.
+A CAPTCHA is shown if a request comes from an IP address that is present on the service’s **blacklist**.
 
-Blacklisted IP addresses are typically associated with suspicious or previously abusive activity.
+Blacklisted IP addresses are typically associated with **suspicious or previously abusive activity**.
 
-An example of this could be an IP address that has been reported for sending spam or attempting to exploit vulnerabilities.
+**Example:** An IP address that has been reported for sending spam or attempting to exploit vulnerabilities.
 
 > **Placeholder:** Link to IP blacklist management documentation
 
@@ -68,7 +68,7 @@ A CAPTCHA may be triggered if the number of requests in the **current hour** exc
 
 This condition helps protect the service during sudden traffic spikes that may indicate coordinated attacks or abnormal behavior.
 
-An example of this could be a sudden surge in traffic from a specific region or during a particular time of day.
+**Example:** A sudden surge in traffic from a specific region or during a particular time of day.
 
 > **Placeholder:** Link to traffic monitoring and analytics documentation
 
@@ -80,13 +80,13 @@ A CAPTCHA is triggered if the same request payload is sent more than **five time
 
 This pattern is common in spam attempts or automated retries that repeatedly submit identical data.
 
-An example of this could be multiple form submissions with the same content in a short period.
+**Example:** Multiple form submissions with the same content in a short period.
 
 ---
 
 ### 5. CAPTCHA enabled manually by administrators
 
-Administrators can manually enable CAPTCHA through the admin panel for selected requests or scenarios.
+Administrators can manually enable CAPTCHA through the **admin panel** for selected requests or scenarios.
 
 This option is typically used during:
 
@@ -94,6 +94,9 @@ This option is typically used during:
 - Maintenance periods that require additional protection
 
 > **Placeholder:** Screenshot of admin panel with CAPTCHA settings highlighted
+
+A manual trigger allows for flexible and immediate response to emerging threats or specific situations that require extra security measures.
+
 > **Placeholder:** Link to admin panel documentation
 
 ---
@@ -102,11 +105,11 @@ This option is typically used during:
 
 When a CAPTCHA is triggered:
 
-- The user is presented with a CAPTCHA challenge
-- The request continues only after the challenge is completed successfully
-- If the user does not complete the CAPTCHA, the request may be delayed or abandoned by the user
+- The user is **presented** with a CAPTCHA challenge
+- The request continues only after the challenge is **completed successfully**
+- If the user does not complete the CAPTCHA, the request may be **delayed or abandoned**
 
-> **Placeholder:** Example CAPTCHA challenge shown to the user
+> **Placeholder:** Screenshot of CAPTCHA challenge as seen by the user
 
 ---
 
@@ -114,25 +117,25 @@ When a CAPTCHA is triggered:
 
 A CAPTCHA may appear for:
 
-- Users sending many requests in a short period of time
-- Users on shared or previously flagged networks
-- Automated tools or scripts
-- Legitimate users during periods of unusual traffic
+- Users sending **many requests** in a short period of time
+- Users on **shared or previously flagged networks**
+- **Automated tools or scripts**
+- Legitimate users during periods of **unusual traffic**
 
-In most cases, CAPTCHA is temporary and stops appearing once activity returns to normal.
+In most cases, CAPTCHA is **temporary** and stops appearing once activity returns to normal.
 
 ---
 
 ## Frequently Asked Questions
 
 **Does seeing a CAPTCHA mean a user is blocked?**  
-No. CAPTCHA is a challenge to verify that the user is human. It does not block access but may require additional steps to continue.
+No. CAPTCHA is a challenge to verify that the user is **human**. It does not block access but may require additional steps to continue.
 
 **Can legitimate users see CAPTCHA?**  
-Yes. Shared networks, VPNs, or temporary spikes in traffic can cause legitimate users to encounter CAPTCHA. It is designed to be a temporary measure.
+Yes. Shared networks, VPNs, or temporary spikes in traffic can cause legitimate users to encounter CAPTCHA. It is designed to be **temporary**.
 
 **How long does CAPTCHA remain active?**  
-CAPTCHA typically stops appearing once traffic returns to normal patterns.
+CAPTCHA typically stops appearing once traffic returns to **normal patterns**.
 
 ---
 
