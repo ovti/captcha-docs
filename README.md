@@ -1,1 +1,1 @@
-# captcha-docs
+# CAPTCHA Triggering Rules
