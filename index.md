@@ -1,5 +1,20 @@
 # How and When CAPTCHAs Are Displayed
 
+## Table of Contents
+
+1. [Overview](#overview)
+2. [How CAPTCHA Is Triggered](#how-captcha-is-triggered)
+3. [Conditions for Triggering CAPTCHA](#conditions-for-triggering-captcha)
+   - [High number of requests](#1-high-number-of-requests-from-one-ip-address)
+   - [IP address is blacklisted](#2-ip-address-is-blacklisted)
+   - [Traffic spike](#3-traffic-spike-compared-to-normal-usage)
+   - [Repeated identical payloads](#4-repeated-identical-payloads)
+   - [Manual admin trigger](#5-captcha-enabled-manually-by-administrators)
+4. [What Happens When CAPTCHA Is Triggered](#what-happens-when-captcha-is-triggered)
+5. [Who Might Encounter a CAPTCHA](#who-might-encounter-a-captcha)
+6. [FAQ](#frequently-asked-questions)
+7. [See Also](#see-also)
+
 ## Overview
 
 CAPTCHA is used to help protect the service from automated traffic, abuse, and other unwanted activity. While CAPTCHA could be shown on every user interaction, doing so would interrupt normal user flow and negatively affect the overall experience.
@@ -29,7 +44,9 @@ If **any** of the conditions is met, a CAPTCHA challenge will be presented to th
 
 A CAPTCHA is triggered if more than **500 requests** are received from the same IP address within **20 minutes**.
 
-This behavior often indicates automated scripts or bots sending requests much faster than a human user would. An example of this could be a bot attempting to scrape data or perform a brute-force attack.
+This behavior often indicates automated scripts or bots sending requests much faster than a human user would.
+
+An example of this could be a bot attempting to scrape data or perform a brute-force attack.
 
 ---
 
@@ -37,7 +54,9 @@ This behavior often indicates automated scripts or bots sending requests much fa
 
 A CAPTCHA is shown if a request comes from an IP address that is present on the service’s blacklist.
 
-Blacklisted IP addresses are typically associated with suspicious or previously abusive activity. An example of this could be an IP address that has been reported for sending spam or attempting to exploit vulnerabilities.
+Blacklisted IP addresses are typically associated with suspicious or previously abusive activity.
+
+An example of this could be an IP address that has been reported for sending spam or attempting to exploit vulnerabilities.
 
 > **Placeholder:** Link to IP blacklist management documentation
 
@@ -47,7 +66,9 @@ Blacklisted IP addresses are typically associated with suspicious or previously 
 
 A CAPTCHA may be triggered if the number of requests in the **current hour** exceeds **twice the average** number of requests for the same hour over the **previous two weeks**.
 
-This condition helps protect the service during sudden traffic spikes that may indicate coordinated attacks or abnormal behavior. An example of this could be a sudden surge in traffic from a specific region or during a particular time of day.
+This condition helps protect the service during sudden traffic spikes that may indicate coordinated attacks or abnormal behavior.
+
+An example of this could be a sudden surge in traffic from a specific region or during a particular time of day.
 
 > **Placeholder:** Link to traffic monitoring and analytics documentation
 
@@ -57,7 +78,9 @@ This condition helps protect the service during sudden traffic spikes that may i
 
 A CAPTCHA is triggered if the same request payload is sent more than **five times within 30 seconds**.
 
-This pattern is common in spam attempts or automated retries that repeatedly submit identical data. An example of this could be multiple form submissions with the same content in a short period.
+This pattern is common in spam attempts or automated retries that repeatedly submit identical data.
+
+An example of this could be multiple form submissions with the same content in a short period.
 
 ---
 
